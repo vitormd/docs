@@ -12,19 +12,19 @@
     "tabs": [
       {
         "tab": "Referência da API",
-        "openapi": "./api-reference/openapi.json"
+        "openapi": "https://services-hml.flexdoc-apis.com.br/services/docs/0-services"
       }
     ]
   },
   "logo": {
-    "light": "/logo/flexdoc-logo.png",
-    "dark": "/logo/flexdoc-logo.png"
+    "light": "/logo/flexdoc-logo-light.png",
+    "dark": "/logo/flexdoc-logo-dark.png"
   },
   "navbar": {
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard-hml.flexdoc-apis.com.br/"
+      "href": "https://dashboard.flexdoc-apis.com.br/"
     }
   },
   "footer": {

@@ -11,6 +11,10 @@
   },
   "servers": [
     {
+      "url": "https://services.flexdoc-apis.com.br/services",
+      "description": "Produção ENV"
+    }
+    {
       "url": "https://services-hml.flexdoc-apis.com.br/services",
       "description": "Homologação ENV"
     }
