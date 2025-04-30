@@ -9,6 +9,14 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
+    "groups": [
+      {
+        "group": "Introdução",
+        "pages": [
+          "introducao"
+        ]
+      }
+    ]
     "tabs": [
       {
         "tab": "Referência da API",
