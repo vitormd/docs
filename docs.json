@@ -27,13 +27,7 @@
           },
           {
             "group": "API",
-            "openapi": "https://flex-des.flexdoc-apis.com.br/services/docs/0-services",
-            "endpoints": [
-              "/api/v1/fraud/analysis",
-              "/api/v1/fraud/analysis/json",
-              "/api/v1/fraud/analysis/facematch",
-              "/api/v1/fraud/analysis/facematch/json"
-            ]
+            "openapi": "https://flex-des.flexdoc-apis.com.br/services/docs/0-services"
           }
         ]
       }
