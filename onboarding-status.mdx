@@ -1,23 +1,19 @@
 ---
-title: Status do Onboarding
-description: Lista dos possíveis status do processo de onboarding e suas descrições.
+title: "Status do Cadastro"
+description: "Lista dos possíveis status do processo de onboarding e suas descrições."
 ---
 
-## 📘 OnboardingStatusEnum
-
-Abaixo estão todos os status possíveis que o processo de onboarding pode assumir durante seu ciclo de vida:
-
-| **Enum**        | **Descrição**                                         |
-|-----------------|-------------------------------------------------------|
-| `STARTED`       | Onboarding iniciado                                   |
-| `PENDING`       | Onboarding pendente (aguardando documentos)           |
-| `PROCESSING`    | Onboarding em processamento                           |
-| `ANALYSIS`      | Onboarding em análise (Backoffice)                    |
-| `DONE`          | Onboarding finalizado com sucesso                     |
-| `REJECTED`      | Onboarding rejeitado                                  |
-| `CANCELED`      | Onboarding cancelado                                  |
-| `ERROR`         | Onboarding com erro (falha no processamento)          |
-| `BLACKLISTED`   | Onboarding em blacklist                               |
-| `RESOLVED`      | Onboarding com pendências resolvidas                  |
+| **Enum**      | **Descrição**                                |
+| ------------- | -------------------------------------------- |
+| `STARTED`     | Onboarding iniciado                          |
+| `PENDING`     | Onboarding pendente (aguardando documentos)  |
+| `PROCESSING`  | Onboarding em processamento                  |
+| `ANALYSIS`    | Onboarding em análise (Backoffice)           |
+| `DONE`        | Onboarding finalizado com sucesso            |
+| `REJECTED`    | Onboarding rejeitado                         |
+| `CANCELED`    | Onboarding cancelado                         |
+| `ERROR`       | Onboarding com erro (falha no processamento) |
+| `BLACKLISTED` | Onboarding em blacklist                      |
+| `RESOLVED`    | Onboarding com pendências resolvidas         |
 
 > ℹ️ Este enum é utilizado em diversos pontos da API, especialmente nas respostas de status de endpoints relacionados a onboarding.
