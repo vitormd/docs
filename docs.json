@@ -27,7 +27,11 @@
           },
           {
             "group": "API",
-            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
+            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services",
+            "endpoints": [
+              "/api/v1/extract/ocr",
+              "/api/v1/extract/ocr/json"
+            ]
           }
         ]
       }
