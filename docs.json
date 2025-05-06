@@ -32,7 +32,7 @@
             ]
           },
           {
-            "group": "V1",
+            "group": "v1",
             "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
           }
         ]
