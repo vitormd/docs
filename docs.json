@@ -26,12 +26,14 @@
             ]
           },
           {
-            "group": "API",
-            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services",
-            "endpoints": [
-              "/api/v1/extract/ocr",
-              "/api/v1/extract/ocr/json"
+            "group": "Enums",
+            "pages": [
+              "/onboarding-status"
             ]
+          },
+          {
+            "group": "API",
+            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
           }
         ]
       }
