@@ -7,11 +7,17 @@
     "light": "#4188c5",
     "dark": "#276ca8"
   },
+  "seo": {
+    "metatags": {
+      "robots": "noindex"
+    }
+  },
   "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
       {
         "tab": "Documentação",
+        "icon": "book-open",
         "pages": [
           "documentation/introduction"
         ]
@@ -21,10 +27,12 @@
         "groups": [
           {
             "group": "V1",
+            "icon": "square-terminal",
             "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
           },
           {
             "group": "Enums",
+            "icon": "table-list",
             "pages": [
               "api-pages/onboarding-status"
             ]
