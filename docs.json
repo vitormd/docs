@@ -27,15 +27,20 @@
         "anchors": [
           {
             "anchor": "Comece aqui",
-            "icon": "traffic-light-go",
+            "icon": "rocket",
             "pages": [
               "api-pages/v1-intro"
             ]
           },
           {
-            "anchor": "V1",
+            "anchor": "APIs",
             "icon": "square-terminal",
-            "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
+            "groups": [
+              {
+                "group": "V1",
+                "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
+              }
+            ]
           },
           {
             "anchor": "Enums",
