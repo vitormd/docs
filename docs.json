@@ -26,6 +26,13 @@
         "tab": "Referência da API",
         "groups": [
           {
+            "group": "Comece aqui",
+            "icon": "traffic-light-go",
+            "pages": [
+              "api-pages/v1-intro"
+            ]
+          },
+          {
             "group": "V1",
             "icon": "square-terminal",
             "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
