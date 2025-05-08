@@ -20,12 +20,6 @@
         "tab": "Referência da API",
         "groups": [
           {
-            "group": "Introdução",
-            "pages": [
-              "api-pages/v1-intro"
-            ]
-          },
-          {
             "group": "V1",
             "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
           },
