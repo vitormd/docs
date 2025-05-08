@@ -21,7 +21,7 @@
           },
           {
             "group": "V1",
-            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
+            "openapi": "https://services-hml.flexdoc-apis.com.br/services/docs/0-services"
           },
           {
             "group": "Enums",
