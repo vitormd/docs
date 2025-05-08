@@ -11,12 +11,18 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Documentação",
+        "pages": [
+          "documentation/introduction"
+        ]
+      },
+      {
         "tab": "Referência da API",
         "groups": [
           {
             "group": "Introdução",
             "pages": [
-              "v1-intro"
+              "api-pages/v1-intro"
             ]
           },
           {
@@ -26,7 +32,7 @@
           {
             "group": "Enums",
             "pages": [
-              "/onboarding-status"
+              "api-pages/onboarding-status"
             ]
           }
         ]
