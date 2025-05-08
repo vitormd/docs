@@ -11,29 +11,23 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentação",
-        "pages": [
-          "/documentation/introduction"
-        ]
-      },
-      {
         "tab": "Referência da API",
         "groups": [
           {
             "group": "Introdução",
             "pages": [
-              "introducao"
+              "V1"
             ]
+          },
+          {
+            "group": "V1",
+            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
           },
           {
             "group": "Enums",
             "pages": [
               "/onboarding-status"
             ]
-          },
-          {
-            "group": "v1",
-            "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
           }
         ]
       }
