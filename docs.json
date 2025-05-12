@@ -29,7 +29,8 @@
             "anchor": "Comece aqui",
             "icon": "rocket",
             "pages": [
-              "api-pages/v1-intro"
+              "api-pages/v1-intro",
+              "api-pages/bpo-intro"
             ]
           },
           {
@@ -38,6 +39,10 @@
             "groups": [
               {
                 "group": "V1",
+                "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
+              },
+              {
+                "group": "BPO",
                 "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
               }
             ]
