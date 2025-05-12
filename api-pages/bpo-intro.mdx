@@ -1,4 +1,75 @@
 ---
 title: "BPO"
-description: "WIP"
+description: "Business Process Operations"
 ---
+
+Para fluxos podem operar com transbordo para mesa de operações, utilizamos as APIs de importação de documentos para iniciar o fluxo interno da Flexdoc.
+
+A API de Importação de documentos permite a importação de uma lista de documentos para o sistema. Esta funcionalidade é acessível através de uma única chamada \`POST\`, que aceita um corpo de solicitação no formato `multipart/formdata`
+
+### Autenticação
+
+A forma de autenticação será utilizada no tipo OAuth. Certifique-se de incluir um token de autorização válido no cabeçalho da requisição.
+
+- **CLIENT_ID**: usuário
+- **CLIENT_SECRET**: [HASH]
+
+Obs: peça os dados de acesso para seu contato comercial/suporte
+
+### Corpo da requisição
+
+O corpo da requisição deve ser enviado no formato multipart/form-data com os seguintes campos:
+
+- **jsonData**: Este campo deve conter os dados JSON no formato especificado abaixo, enviado como um arquivo.
+- **files**: Este campo deve conter o arquivo a ser importado, por exemplo, um PDF.
+
+**Exemplo de JSON (jsonData)**
+
+```json
+{
+  "workflowAlias": "onb_auto",
+  "batchExternalId": "999999",
+  "batchOrigin": "1",
+  "keys": [
+    {
+	  "key": "cpf",
+	  "value": "1111111111"
+	}
+  ],
+  "docs": [
+	{
+	  "fileName": "my-file.pdf",
+	  "typeAlias": "nao_identificado",
+	  "contentType": "pdf"
+	}
+  ]
+}
+```
+
+- **workflowAlias**: Identificador do fluxo de trabalho. No projeto, utilizaremos o fluxo “onb_auto”.
+- **batchExternalId**: ID externo do lote de documentos, pode ser utilizado algum identificador do seu sistema.
+- **batchOrigin**: Origem do lote de documentos. Como padrão, “1”.
+- **keys**: Lista de chaves associadas ao documento. Cada chave deve
+
+  incluir:
+  - **key**: Nome da chave.
+  - **value**: Valor associado à chave.
+- **docs**: Lista de documentos a serem importados. Cada documento deve
+
+  incluir:
+  - **fileName**: Nome do arquivo.
+  - **typeAlias**: Formato do documento. Não é um campo obrigatório.
+
+    Caso não seja enviado, o documento passará pela fase de deep learning para classificação.
+
+    | **typeAlias**    | **Descrição**    |
+    | ---------------- | ---------------- |
+    | nao_identificado | Não identificado |
+  - **contentType**: Tipo do documento a ser enviado.
+
+    | **contentType** | **Descrição**           |
+    | --------------- | :---------------------- |
+    | pdf             | Arquivo no formato  PDF |
+    | jpg             | JPG                     |
+    | jpeg            | JPEG                    |
+    | png             | PNG                     |
