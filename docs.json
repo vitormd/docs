@@ -51,7 +51,8 @@
             "anchor": "Enums",
             "icon": "table-list",
             "pages": [
-              "api-pages/onboarding-status"
+              "api-pages/onboarding-status",
+              "api-pages/process-type"
             ]
           }
         ]
