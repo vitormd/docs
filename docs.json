@@ -39,7 +39,7 @@
             "groups": [
               {
                 "group": "V1",
-                "openapi": "https://flex-services-api.ngrok.app/services/docs/0-services"
+                "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
               },
               {
                 "group": "BPO",
