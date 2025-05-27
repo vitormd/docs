@@ -36,10 +36,10 @@
         ]
       },
       {
-        "tab": "Referencia da API",
-        "groups": [
+        "tab": "Referência da API",
+        "anchors": [
           {
-            "group": "Comece aqui",
+            "anchor": "Comece aqui",
             "icon": "rocket",
             "pages": [
               "api-pages/v1-intro",
@@ -47,25 +47,21 @@
             ]
           },
           {
-            "group": "APIs",
+            "anchor": "APIs",
             "icon": "square-terminal",
-            "pages": [
+            "groups":[
               {
-                "groups": [
-                  {
-                    "group": "V1",
-                    "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
-                  },
-                  {
-                    "group": "BPO",
-                    "openapi": "https://flex-des.flexdoc-apis.com.br/import/v3/api-docs/Documenta%C3%A7%C3%A3o%20Completa"
-                  }
-                ]
+                "group": "V1",
+                "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
+              },
+              {
+                "group": "BPO",
+                "openapi": "https://flex-des.flexdoc-apis.com.br/import/v3/api-docs/Documenta%C3%A7%C3%A3o%20Completa"
               }
             ]
           },
           {
-            "group": "Enums",
+            "anchor": "Enums",
             "icon": "table-list",
             "pages": [
               "api-pages/onboarding-status",
