@@ -16,18 +16,22 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentacao",
-        "icon": "book-open",
-        "pages": [
-          "documentation/introduction",
+        "tab": "Documentação",
+        "groups": [
           {
-            "groups": {
-              "group": "Solucoes",
-              "pages": [
-                "documentation/onboarding",
-                "documentation/backgroundcheck"
-              ]
-            }
+            "group": "Comece aqui",
+            "icon": "rocket",
+            "pages": [
+              "index"
+            ]
+          },
+          {
+            "group": "Soluções",
+            "icon": "lightbulb-on",
+            "pages": [
+              "documentation/onboarding",
+              "documentation/backgroundcheck"
+            ]
           }
         ]
       },
