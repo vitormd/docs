@@ -16,13 +16,13 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentação",
+        "tab": "Documentacao",
         "icon": "book-open",
         "pages": [
           "documentation/introduction",
           {
             "groups": {
-              "group": "Soluções",
+              "group": "Solucoes",
               "pages": [
                 "documentation/onboarding",
                 "documentation/backgroundcheck"
