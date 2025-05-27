@@ -19,7 +19,16 @@
         "tab": "Documentação",
         "icon": "book-open",
         "pages": [
-          "documentation/introduction"
+          "documentation/introduction",
+          {
+            "groups": {
+              "group": "Soluções",
+              "pages": [
+                "documentation/onboarding",
+                "documentation/backgroundcheck"
+              ]
+            }
+          }
         ]
       },
       {
