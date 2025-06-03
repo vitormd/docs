@@ -69,6 +69,19 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "SDKs Mobile",
+        "anchors": [
+          {
+            "anchor": "FlexMobile",
+            "icon": "gear-complex-code",
+            "pages": [
+              "flexmobile/android",
+              "flexmobile/ios"
+            ]
+          }
+        ]
       }
     ]
   },
