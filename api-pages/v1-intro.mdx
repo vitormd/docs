@@ -1,24 +1,44 @@
 ---
 title: "API V1"
-description: "Descrição das APIs V1 e uso dos serviços Flexdoc"
+description: "Descrição das APIs na V1 e uso dos serviços Flexdoc"
 ---
 
-## Autenticação
+## [Autenticação](/api-reference/autenticação)
 
 Para autenticar nos serviços da Flexdoc, utilizamos o métod de OAuth2. Utilize o endpoint `/authentication` com suas credenciais de acesso de usuário para acessar seu `access_token` e `refresh_token`.
 
-Para testes dos endpoints basta copiar o `access_token` retornado e utilizar nos outros enpoints como no campo de `Authorization.`
+Para testes dos endpoints basta copiar o `access_token` retornado e utilizar nos outros enpoints como no campo de `Authorization`.
 
-## Biometria
+## [Biometria](/api-reference/biometria/)
 
 Serviços relacionados às checagens biometricas de face e prova de vida.
 
-## Análise de Fraude
+## [Análise de Fraude](/api-reference/análise-de-fraude)
 
 Serviços utilizados para uma análise rápida e automática de documentoscopia com ou sem checagem de face. Estes serviços não são considerados `Cadastros` na plataforma.
 
-## Cadastros
+## [Background Check](/api-reference/background-check-services)
+
+Endpoint para gerar e buscar relatórios de background check. Os datasets usados serão os mesmos configurados na plataforma para todo o fluxo de cadastro. Fale com nosso comercial ou suporte para configurar os datasets.
+
+## [Cadastros](/api-reference/cadastros)
 
 Serviços para criação e consulta de resultado de `Cadastros`.
 
 Aqui se aplicam todas as regras definidas no `Dashboard` da plataforma e cada cadastro criado irá aparecer dentro da plataforma para avaliação e observação manual.
+
+## [Extração - OCR](/api-reference/extração--ocr)
+
+Permite enviar imagens de documentos e obter a estrutura do texto com detalhes da confiança e posição do texto dentro da matrix da imagem.
+
+## [Steps Services](/api-reference/steps-services) - BETA
+
+<Warning>
+  API em desenvolvimento: Estável, mas funcionalidades de personalização e suporte são limitadas
+</Warning>
+
+Este serviço fornece etapas do processo de verificação de identidade de maneira modular.
+
+É possível requisitar apenas uma etapa de captura de biometria com facematch ou captura de documento com checagem de fraude embutido. Muito útil para necessidades pontuais de operações que não são de cadastro.
+
+Os enpoints retornam URLs que podem ser utilizadas pelo usuário final para fazer a coleta de maneira integrada a qualquer plataforma através de `redirect`, `iFrame` em plataformas Web ou `WebView` no caso de APPs nativos para Mobile ou Desktop.

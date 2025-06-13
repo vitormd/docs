@@ -22,7 +22,8 @@
             "group": "Comece aqui",
             "icon": "rocket",
             "pages": [
-              "index"
+              "index",
+              "implementation"
             ]
           },
           {
