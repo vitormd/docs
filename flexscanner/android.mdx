@@ -1,0 +1,137 @@
+---
+description: "Especificações Técnicas"
+title: "SDK FlexScanner Android"
+sidebarTitle: "Android"
+icon: "Android"
+tag: "SDK"
+keywords: "SDK,Mobile,Android,Document,Captur"
+---
+
+## Introdução
+
+Este documento apresenta uma análise aprofundada do SDK FlexScanner, uma solução avançada e robusta de captura documental embarcada, especificamente projetada para operar exclusivamente em dispositivos móveis, com foco total em ambientes offline. O SDK foi arquitetado para atender a demandas rigorosas de digitalização precisa, validação de qualidade de imagem e pré-processamento local de alto desempenho, sem depender de conectividade com servidores externos. Esta documentação visa orientar equipes de desenvolvimento com formação sênior na integração da solução em aplicações Android nativas desenvolvidas em Kotlin, abordando desde os aspectos arquiteturais fundamentais até estratégias avançadas de configuração, manutenção e evolução do código em produção.
+
+## Requisitos Técnicos Mínimos
+
+- IDE: Android Studio Arctic Fox (v2020.3.1) ou versões mais recentes.
+- Android SDK: versão 21 ou superior (suporte mínimo a Android 4.1 – API Level 16).
+- Linguagem: Kotlin versão 1.6.0 ou superior, com suporte a features modernas da linguagem (sealed classes, lambdas, data classes).
+- Gradle: sistema de build na versão 7.0 ou superior.
+- Conhecimentos técnicos esperados: manipulação de bibliotecas nativas (.aar), interoperabilidade com código C\+\+ via Android NDK, integração de bibliotecas externas, análise de logs e diagnóstico de falhas em tempo de execução.
+
+## Arquitetura da Solução
+
+O FlexScanner adota uma arquitetura híbrida, mesclando componentes nativos de alto desempenho em C\+\+ com interfaces acessíveis via Kotlin, expondo funcionalidades críticas de imagem através de bindings com Android NDK. O core do SDK utiliza OpenCV como principal framework para operações de segmentação, correção de distorção geométrica, identificação de brilho e contraste, normalização de cor e padronização da imagem final.
+
+O artefato `.aar` entregue já contém as bibliotecas nativas pré-compiladas para as principais arquiteturas Android (`arm64-v8a`, `x86`, `x86_64`, `armeabi-v7a`). O suporte a funcionalidades avançadas como OCR (Reconhecimento Óptico de Caracteres) e ICR (Reconhecimento Inteligente de Cheques) está disponível mediante licenciamento modular adicional, sendo possível sua ativação sob demanda mediante parâmetros de inicialização.
+
+## Observação sobre Licenciamento
+
+O SDK requer licenciamento ativo via `licenseKey` e `companyName`, sob validação offline local. As licenças são geradas pela Valid com validade contratual e são obrigatórias para o funcionamento.
+
+## Estrutura Programática
+
+### Classe de Entrada: `FlexDocScanner`
+
+Responsável pela inicialização do SDK e controle da execução do fluxo de captura. Utiliza convenções idiomáticas da linguagem Kotlin para retorno via lambda functions:
+
+```kotlin
+FlexDocScanner.initialize(context, "SUA_CHAVE_API")
+FlexDocScanner.startScanner(activity, config) { result ->
+    when (result) {
+        is ScanResult.Success -> processDocument(result.document)
+        is ScanResult.Error -> handleError(result.error)
+    }
+}
+```
+
+### Configuração via `ScannerConfig`
+
+Permite parametrizar o comportamento da engine de captura:
+
+```kotlin
+val config = ScannerConfig(
+    documentType = DocumentType.ID_CARD,
+    quality = ScanQuality.HIGH,
+    enableOCR = true,
+    autoCapture = true,
+    flashMode = FlashMode.AUTO
+)
+```
+
+### Tratamento de Erros
+
+Sistema baseado em sealed class:
+
+```kotlin
+sealed class ScanError {
+    object CameraPermissionDenied : ScanError()
+    object StoragePermissionDenied : ScanError()
+    data class CameraError(val message: String) : ScanError()
+    data class ProcessingError(val message: String) : ScanError()
+}
+```
+
+### Objeto de Retorno: `ScanResult`
+
+```kotlin
+sealed class ScanResult {
+    data class Success(val document: ScannedDocument) : ScanResult()
+    data class Error(val error: ScanError) : ScanResult()
+}
+```
+
+## Pipeline de Processamento
+
+O ciclo completo de captura inclui as seguintes etapas:
+
+1. Detecção automática de posicionamento baseado em heurísticas visuais.
+2. Correção de bordas e contornos por detecção poligonal.
+3. Aplicação de transformações de perspectiva (UnWarping).
+4. Normalização de brilho e contraste.
+5. Compressão da imagem (JPEG/PNG) com preservação de nitidez (redução de até 90%).
+6. Execução opcional de OCR e/ou ICR para extração de dados textuais.
+7. Geração e persistência do objeto `ScannedDocument`.
+
+## Integração via Intents (API Legada)
+
+Além da API moderna, o SDK mantém suporte a integração via `Intent`, útil para arquiteturas desacopladas.
+
+```java
+Intent i = new Intent(this, ScanActivity.class);
+i.putExtra(ScanActivity.LICENSE_COMPANY_NAME, "BANCO INTER");
+i.putExtra(ScanActivity.LICENSE_EXPIRY_DATE, "31/10/2021");
+i.putExtra(ScanActivity.LICENSE_FEATURES, "A:11111111111111111111");
+i.putExtra(ScanActivity.LICENSE_HASH, "...hash...");
+i.putExtra(ScanActivity.DOCUMENT_TYPE_SETTING, DocumentType.CNHF.getValue());
+i.putExtra(ScanActivity.DOCUMENT_TARGET_WIDTH, "1000");
+i.putExtra(ScanActivity.DOCUMENT_UNWARP, "1");
+i.putExtra(ScanActivity.DOCUMENT_ADD_EXTRA_BORDER, "50");
+i.putExtra(ScanActivity.DOCUMENT_ENABLE_MANUAL_SHUTTER, "1");
+// Bitmap overlay opcional:
+// i.putExtra(ScanActivity.DOCUMENT_MASK_BITMAP, byteArray);
+```
+
+## Parâmetros Avançados de Captura
+
+- `COLOR_DEPTH`: profundidade da imagem (preto/branco, grayscale, RGB)
+- `OUTPUT_TYPE`: formato de saída (PNG, JPG, BMP)
+- `ASPECT_RATIO`: proporção altura/largura esperada
+- `HIGH_TRESHFACTOR` / `LOW_TRESHFACTOR`: limites de luminosidade
+- `HIGH_BURNED_THRESHOLD`: reflexos e brilho excessivo
+
+## Parametrização Estática (via Recompilação da Lib)
+
+Alguns parâmetros só podem ser modificados recompilando a biblioteca:
+
+- `MAX_SKEW_ANGLE`: 15.0
+- `MIN_CORNER_ANGLE_DEGREES`: 80
+- `MAX_BRIGHT_RATIO`: 0.50
+
+## Integração Gradle Alternativa
+
+Para projetos com repositórios remotos configurados:
+
+```kotlin
+implementation 'com.valid:flexdoc-scanner:1.0.0'
+```

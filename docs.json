@@ -50,7 +50,7 @@
           {
             "anchor": "APIs",
             "icon": "square-terminal",
-            "groups":[
+            "groups": [
               {
                 "group": "V1",
                 "openapi": "https://flex-hml.flexdoc-apis.com.br/services/docs/0-services"
@@ -75,11 +75,11 @@
         "tab": "SDKs Mobile",
         "anchors": [
           {
-            "anchor": "FlexMobile",
+            "anchor": "FlexSacanner",
             "icon": "gear-complex-code",
             "pages": [
-              "flexmobile/android",
-              "flexmobile/ios"
+              "flexscanner/android",
+              "flexscanner/ios"
             ]
           }
         ]
