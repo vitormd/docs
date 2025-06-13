@@ -3,35 +3,35 @@ title: "API V1"
 description: "Descrição das APIs na V1 e uso dos serviços Flexdoc"
 ---
 
-## [Autenticação](/api-reference/autenticação)
+## [Autenticação](/api-reference/autenticação/autentica-usuário-e-retorna-token-jwt)
 
 Para autenticar nos serviços da Flexdoc, utilizamos o métod de OAuth2. Utilize o endpoint `/authentication` com suas credenciais de acesso de usuário para acessar seu `access_token` e `refresh_token`.
 
 Para testes dos endpoints basta copiar o `access_token` retornado e utilizar nos outros enpoints como no campo de `Authorization`.
 
-## [Biometria](/api-reference/biometria/)
+## [Biometria](/api-reference/análise-de-fraude/cpf-documento-e-face)
 
 Serviços relacionados às checagens biometricas de face e prova de vida.
 
-## [Análise de Fraude](/api-reference/análise-de-fraude)
+## [Análise de Fraude](/api-reference/análise-de-fraude/cpf-documento-e-face)
 
 Serviços utilizados para uma análise rápida e automática de documentoscopia com ou sem checagem de face. Estes serviços não são considerados `Cadastros` na plataforma.
 
-## [Background Check](/api-reference/background-check-services)
+## [Background Check](/api-reference/background-check-services/realiza-background-check-com-callback)
 
 Endpoint para gerar e buscar relatórios de background check. Os datasets usados serão os mesmos configurados na plataforma para todo o fluxo de cadastro. Fale com nosso comercial ou suporte para configurar os datasets.
 
-## [Cadastros](/api-reference/cadastros)
+## [Cadastros](/api-reference/cadastros/nova-análise-de-cadastro)
 
 Serviços para criação e consulta de resultado de `Cadastros`.
 
 Aqui se aplicam todas as regras definidas no `Dashboard` da plataforma e cada cadastro criado irá aparecer dentro da plataforma para avaliação e observação manual.
 
-## [Extração - OCR](/api-reference/extração--ocr)
+## [Extração - OCR](/api-reference/extração--ocr/ocr-de-documento-padronizado)
 
 Permite enviar imagens de documentos e obter a estrutura do texto com detalhes da confiança e posição do texto dentro da matrix da imagem.
 
-## [Steps Services - BETA](/api-reference/steps-services)
+## [Steps Services - BETA](/api-reference/steps-services//inicia-o-processo-de-liveness)
 
 <Warning>
   API em desenvolvimento: Estável, mas funcionalidades de personalização e suporte são limitadas
