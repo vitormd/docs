@@ -1,0 +1,74 @@
+---
+title: "Primeiro acesso"
+description: "Tutorial de primeiro acesso ao portal e criação de chves para APIs da Facetec."
+---
+
+## Portal
+
+- [Portal de Homologação](https://valid-gateway-hml-428414-validid.apigee.io/portal)
+- [Portal de Produção](https://valid-gateway-prd-367218-validid.apigee.io/portal)
+
+Ao acessar o portal, será necessário fazer um cadastro clicando no link conforme imagem abaixo:
+
+![Cadastro no Portal](/facetec/images/portal-signin.png)
+
+Após acessar o link, preencha os dados na tela seguinte:
+
+![Dados de cadastro](/facetec/images/signup-data.png)
+
+Agora você pode voltar para o link original do portal e fazer o login com os dados que acabou de cadastrar.
+
+## Times
+
+Para utilizar a API é necessário criar um time. Um time é um grupo de usuários que podem acessar as APIs. Você pode criar quantos times forem necessários.
+
+Após o login, a página inicial do portal aparecerá novamente, porém, com seu e-mail sendo exibido no canto superior direito da página,
+clique no seu e-mail e depois em `Teams`:
+
+![Menu de times](/facetec/images/teams-link.png)
+
+### Criando um time
+
+Crie um time a partir do botão `Create Team`:
+
+![Criar time](/facetec/images/create-team-link.png)
+
+Preencha o formulário com o nome do time e selecione o nível de acesso de cada membro.
+
+Existem três níveis de acesso para os membros do time:
+
+1. Viewer: Apenas visualiza as informações e credenciais dos Apps;
+2. App Admin: Faz tudo o que o Viewer faz e ainda pode administrar apps e credenciais;
+3. Owner: Faz tudo o que o App Admin faz e ainda é capaz de gerenciar os usuários com acesso ao time.
+
+![Formulário de criação de time](/facetec/images/create-team-form.png)
+
+Após isso, clique em `Create`.
+
+### Criando um App
+
+Ainda dentro do formulário de criação de time, você pode criar um App. Um App é utilizado para gerar credenciais de acesso das APIs para o time.
+
+![Formulário de criação de app](/facetec/images/create-app-link.png)
+
+Para isso, clique em `Create App` e preencha o formulário com o nome do App, a descrição e selecione o time que você está criando.
+
+![Formulário de criação de app](/facetec/images/create-app-form.png)
+
+Indique que quer habilitar as APIs da Facetec:
+
+![Habilitar APIs](/facetec/images/create-app-form-apis.png)
+
+<Warning>
+  A aprovação do uso das APIs da Facetec depende de aprovação humana. Notifique seu ponto de contato comercial após a o término da criação do Time e da App.
+</Warning>
+
+## Credenciais de acesso
+
+Dentro da página do seu recém criado App, você verá a seção `API Keys` com as credenciais de acesso no formato de `Key` e `Secret`:
+
+![Credenciais de acesso](/facetec/images/app-credentials-data.png)
+
+## Autenticação e acesso às APIs
+
+Com suas credenciais em mãos, siga o guia de [Autenticação](/facetec/authentication) para aprender como autenticar e acessar as APIs do portal.
