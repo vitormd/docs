@@ -1,0 +1,43 @@
+---
+title: "Introdução"
+description: "​Como a Valid pode ajudar sua empresa na implementação simplificada de tecnologias fornecidas pela Facetec."
+---
+
+Através da Valid é possível consumir diversos serviços de biometria oferecidos pela Facetec sem as complicações de manter uma infraestrutura própria.
+
+## Lista das APIs disponíveis
+
+### Autenticação
+/session-token GET OPTIONS
+
+### Enrollment
+/enrollment-3d POST OPTIONS
+/enrollment-3d/* GET OPTIONS
+
+### Facematch - Comparação de faces
+/match-3d-3d POST OPTIONS
+/match-3d-2d-idscan POST OPTIONS
+/match-2d-2d POST OPTIONS
+/match-3d-2d-3rdparty-idphoto POST OPTIONS
+/match-3d-2d-face-portrait POST OPTIONS
+/match-3d-2d-3rdparty-idscan-low-quality POST OPTIONS
+/match-3d-2d-profile-picture POST OPTIONS
+
+### Liveness - Prova de vida
+/liveness-3d POST OPTIONS
+/liveness-2d POST OPTIONS
+
+### Age Verification - Verificação de idade
+/check-age-2d POST OPTIONS
+/check-age-2d-v2 POST OPTIONS
+
+### ID Scan - Leitura de documentos
+/idscan-only POST OPTIONS
+
+### Portal de acesso
+Para acesso à nossas APIs, é necessário se cadastrar em nosso portal. Possuímos um ambiente para Homologação e outro para Produção.
+
+- [Portal de Homologação](https://valid-gateway-hml-428414-validid.apigee.io/portal)
+- [Portal de Produção](https://valid-gateway-prd-367218-validid.apigee.io/portal)
+
+Siga a o guia de [Primeiro Acesso](/facetec/first-access) para criar sua conta e acessar o portal.
