@@ -128,9 +128,9 @@
   },
   "api": {
     "mdx": {
+      "server": ["https://api-hml.valid.com", "https://api.valid.com"],
       "auth": {
-        "method": "bearer",
-        "server": ["https://api-hml.valid.com", "https://api.valid.com"]
+        "method": "bearer"
       }
     }
   }
