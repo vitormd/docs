@@ -83,6 +83,32 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Facetec",
+        "anchors": [
+          {
+            "anchor": "Comece Aqui",
+            "icon": "rocket",
+            "pages": [
+              "facetec/introduction",
+              "facetec/first-access",
+              "facetec/authentication"
+            ]
+          },
+          {
+            "anchor": "APIs",
+            "icon": "square-terminal",
+            "groups": [
+              {
+                "group": "Autenticação",
+                "pages": [
+                  "facetec/api/authentication/generate-access-token"
+                ]
+              } 
+            ]
+          }
+        ]
       }
     ]
   },

@@ -7,34 +7,55 @@ Através da Valid é possível consumir diversos serviços de biometria oferecid
 
 ## Lista das APIs disponíveis
 
-### Autenticação
-/session-token GET OPTIONS
-
-### Enrollment
-/enrollment-3d POST OPTIONS
-/enrollment-3d/* GET OPTIONS
-
-### Facematch - Comparação de faces
-/match-3d-3d POST OPTIONS
-/match-3d-2d-idscan POST OPTIONS
-/match-2d-2d POST OPTIONS
-/match-3d-2d-3rdparty-idphoto POST OPTIONS
-/match-3d-2d-face-portrait POST OPTIONS
-/match-3d-2d-3rdparty-idscan-low-quality POST OPTIONS
-/match-3d-2d-profile-picture POST OPTIONS
-
-### Liveness - Prova de vida
-/liveness-3d POST OPTIONS
-/liveness-2d POST OPTIONS
-
-### Age Verification - Verificação de idade
-/check-age-2d POST OPTIONS
-/check-age-2d-v2 POST OPTIONS
-
-### ID Scan - Leitura de documentos
-/idscan-only POST OPTIONS
+<Tabs>
+  <Tab title="Status">
+    | Endpoint    | Method  | OPTIONS? |
+    | ----------- | ------- | -------- |
+    | **/status** | **GET** | ❌        |
+  </Tab>
+  <Tab title="Token">
+    | Endpoint           | Method  | OPTIONS? |
+    | ------------------ | ------- | -------- |
+    | **/session-token** | **GET** | ✅        |
+  </Tab>
+  <Tab title="Enrollment">
+    | Endpoint              | Method  | OPTIONS? |
+    | --------------------- | ------- | -------- |
+    | **/enrollment-3d**    | **GET** | ✅        |
+    | **/enrollment-3d/\*** | **GET** | ✅        |
+  </Tab>
+  <Tab title="Facematch">
+    | Endpoint                                     | Method   | OPTIONS? |
+    | -------------------------------------------- | -------- | -------- |
+    | **/match-3d-3d**                             | **POST** | ✅        |
+    | **/match-3d-2d-idscan**                      | **POST** | ✅        |
+    | **/match-2d-2d**                             | **POST** | ✅        |
+    | **/match-3d-2d-3rdparty-idphoto**            | **POST** | ✅        |
+    | **/match-3d-2d-face-portrait**               | **POST** | ✅        |
+    | **/match-3d-2d-3rdparty-idscan-low-quality** | **POST** | ✅        |
+    | **/match-3d-2d-profile-picture**             | **POST** | ✅        |
+  </Tab>
+  <Tab title="Liveness">
+    | Endpoint         | Method   | OPTIONS? |
+    | ---------------- | -------- | -------- |
+    | **/liveness-3d** | **POST** | ✅        |
+    | **/liveness-2d** | **POST** | ✅        |
+  </Tab>
+  <Tab title="Age Verification">
+    | Endpoint             | Method   | OPTIONS? |
+    | -------------------- | -------- | -------- |
+    | **/check-age-2d**    | **POST** | ✅        |
+    | **/check-age-2d-v2** | **POST** | ✅        |
+  </Tab>
+  <Tab title="ID Scan">
+    | Endpoint         | Method   | OPTIONS? |
+    | ---------------- | -------- | -------- |
+    | **/idscan-only** | **POST** | ✅        |
+  </Tab>
+</Tabs>
 
 ### Portal de acesso
+
 Para acesso à nossas APIs, é necessário se cadastrar em nosso portal. Possuímos um ambiente para Homologação e outro para Produção.
 
 - [Portal de Homologação](https://valid-gateway-hml-428414-validid.apigee.io/portal)
