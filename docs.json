@@ -125,5 +125,13 @@
   },
   "footer": {
     "socials": {}
+  },
+  "api": {
+    "mdx": {
+      "auth": {
+        "method": "bearer",
+        "server": ["https://api-hml.valid.com", "https://api.valid.com"]
+      }
+    }
   }
 }
