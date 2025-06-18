@@ -101,7 +101,23 @@
             "icon": "key",
             "pages": [
               "facetec/api/auth/access-token",
-              "facetec/api/auth/invalidate-token"
+              "facetec/api/auth/invalidate-token",
+              "facetec/api/auth/exchange-token"
+            ]
+          },
+          {
+            "group": "Server",
+            "icon": "server",
+            "pages": [
+              "facetec/api/server/session-token",
+              "facetec/api/server/status"
+            ]
+          },
+          {
+            "group": "Livenss",
+            "icon": "eye",
+            "pages": [
+              "facetec/api/liveness/liveness-3d"
             ]
           }
         ]
