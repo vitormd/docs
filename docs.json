@@ -86,18 +86,16 @@
       },
       {
         "tab": "Facetec",
-        "anchors": [
+        "groups": [
           {
-            "anchor": "Comece Aqui",
+            "group": "Comece Aqui",
             "icon": "rocket",
             "pages": [
               "facetec/introduction",
               "facetec/first-access",
               "facetec/authentication"
             ]
-          }
-        ],
-        "groups": [
+          },
           {
             "group": "APIs",
             "icon": "square-terminal",
