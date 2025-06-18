@@ -122,7 +122,7 @@
           },
           {
             "group": "Face Match",
-            "icon": "equal",
+            "icon": "equals",
             "pages": [
               "facetec/api/match/match-3d-3d",
               "facetec/api/match/match-2d-2d",
