@@ -99,7 +99,16 @@
           {
             "group": "APIs",
             "icon": "square-terminal",
-            "openapi": "/facetec/api/openapi.json"
+            "groups": [
+              {
+                "group": "Autenticação",
+                "icon": "key",
+                "pages": [
+                  "facetec/api/auth/access-token",
+                  "facetec/api/auth/invalidate-token"
+                ]
+              }
+            ]
           }
         ]
       }
