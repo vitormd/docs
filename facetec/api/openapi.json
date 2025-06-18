@@ -18,7 +18,7 @@
   "paths": {
     "/oauth/client_credential/accesstoken": {
       "post": {
-        "summary": "GenerateAccessToken",
+        "summary": "Gera Access Token",
         "description": "Utilizado para solicitar um token. A lista de produtos retornada vem dos produtos que a aplicação tem acesso de acordo com o configurado na área de Apps do Apigee.",
         "requestBody": {
           "required": true,
@@ -57,7 +57,7 @@
     },
     "/oauth/client_credential/revoke_accesstoken": {
       "get": {
-        "summary": "InvalidateAccessToken",
+        "summary": "Invalída Access Token",
         "description": "Utilizado para invalidar um token existente",
         "parameters": [
           {
@@ -79,7 +79,7 @@
     },
     "/oauth/client_credential/exchangetoken": {
       "post": {
-        "summary": "ExchangeJWTToken",
+        "summary": "Troca JWT por Opaco",
         "description": "Conforme podemos ver na página de Integração com o Keycloak, pode ser necessário gerar um token opaco a partir de um token JWT gerado na nossa instância de Keycloak",
         "parameters": [
           {
@@ -139,7 +139,7 @@
     },
     "/session-token": {
       "get": {
-        "summary": "Session Token",
+        "summary": "Gera Facetec Session Token",
         "description": "Gera um pedaço de dados criptografado e assinado chamado Session Token, que é recebido como entrada para o código de inicialização do Liveness Check no lado do dispositivo.",
         "parameters": [
           {
@@ -240,7 +240,7 @@
     },
     "/enrollment-3d": {
       "post": {
-        "summary": "Enrollment-3D",
+        "summary": "Enrollment 3D",
         "description": "Executa uma verificação de liveness 3D no FaceScan e armazena o FaceMap 3D resultante no banco de dados em caso de sucesso.",
         "parameters": [
           {
@@ -313,7 +313,7 @@
     },
     "/enrollment-3d/{TEST_EXTERNAL_DBREF_ID}": {
       "get": {
-        "summary": "Enrollment 3d test_external_dbref_id",
+        "summary": "Enrollment 3D",
         "description": "Obtenha o FaceMap, Imagem e dados de criação associados ao Identificador de enrollment passado. Defina o FaceMap para o exemplo de FaceMap Audit Data.",
         "parameters": [
           {
@@ -352,7 +352,7 @@
     },
     "/match-3d-3d": {
       "post": {
-        "summary": "Match 3D3D",
+        "summary": "Match 3D:3D",
         "description": "Executa uma verificação de vivacidade 3D no FaceScan e, em seguida, executa o match 3D para 3D no FaceMap 3D resultante em relação ao FaceMap 3D armazenado no banco de dados.",
         "parameters": [
           {
@@ -425,8 +425,8 @@
     },
     "/match-3d-2d-idscan": {
       "post": {
-        "summary": "Match 3D/2D idscan",
-        "description": "Analisa o ID Scan para garantir que seja uma captura de Full ID e que não seja um Digital Spoof de um ID apresentado em uma tela. Faz a comparação do rosto na digitalização de identificação com o FaceMap 3D.",
+        "summary": "Match 3D:2D ID Scan",
+        "description": "Analisa um documento de identidade para garantir que seja uma captura completa e verdadeira do documento. Faz a comparação do rosto do documento de identificação com o FaceMap 3D.",
         "parameters": [
           {
             "name": "Content-Type",
@@ -501,7 +501,7 @@
     },
     "/match-2d-2d": {
       "post": {
-        "summary": "Match 2D2D",
+        "summary": "Match 2D:2D",
         "description": "Executa 2D para 2D Matching de duas imagens.",
         "parameters": [
           {
