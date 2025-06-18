@@ -114,10 +114,27 @@
             ]
           },
           {
-            "group": "Livenss",
+            "group": "Liveness",
             "icon": "eye",
             "pages": [
               "facetec/api/liveness/liveness-3d"
+            ]
+          },
+          {
+            "group": "Face Match",
+            "icon": "equal",
+            "pages": [
+              "facetec/api/match/match-3d-3d",
+              "facetec/api/match/match-2d-2d",
+              "facetec/api/match/match-3d-2d-idscan"
+            ]
+          },
+          {
+            "group": "Enrollment",
+            "icon": "cloud",
+            "pages": [
+              "facetec/api/enrollment/enrollment-3d",
+              "facetec/api/enrollment/enrollment-3d-get"
             ]
           }
         ]
