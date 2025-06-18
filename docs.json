@@ -97,17 +97,11 @@
             ]
           },
           {
-            "group": "APIs",
-            "icon": "square-terminal",
-            "groups": [
-              {
-                "group": "Autenticação",
-                "icon": "key",
-                "pages": [
-                  "facetec/api/auth/access-token",
-                  "facetec/api/auth/invalidate-token"
-                ]
-              }
+            "group": "Autenticação",
+            "icon": "key",
+            "pages": [
+              "facetec/api/auth/access-token",
+              "facetec/api/auth/invalidate-token"
             ]
           }
         ]
