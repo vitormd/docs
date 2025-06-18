@@ -95,18 +95,13 @@
               "facetec/first-access",
               "facetec/authentication"
             ]
-          },
+          }
+        ],
+        "groups": [
           {
-            "anchor": "APIs",
+            "group": "APIs",
             "icon": "square-terminal",
-            "groups": [
-              {
-                "group": "Autenticação",
-                "pages": [
-                  "facetec/api/authentication/generate-access-token"
-                ]
-              } 
-            ]
+            "openapi": "/facetec/api/openapi.json"
           }
         ]
       }

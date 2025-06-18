@@ -1,0 +1,568 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Facetec API via Apigee",
+    "description": "O objetivo deste documento é de ensinar como utilizar o serviço do Facetec, através do Apigee",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api-hml.valid.com",
+      "description": "Homologação"
+    },
+    {
+      "url": "https://api.valid.com",
+      "description": "Produção"
+    }
+  ],
+  "paths": {
+    "/oauth/client_credential/accesstoken": {
+      "post": {
+        "summary": "GenerateAccessToken",
+        "description": "Utilizado para solicitar um token. A lista de produtos retornada vem dos produtos que a aplicação tem acesso de acordo com o configurado na área de Apps do Apigee.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": ["client_id", "client_secret"],
+                "properties": {
+                  "client_id": {
+                    "type": "string",
+                    "description": "valor recuperado da Aplicação do usuário, no Portal externo do Apigee"
+                  },
+                  "client_secret": {
+                    "type": "string",
+                    "description": "valor recuperado da Aplicação do usuário, no Portal externo do Apigee"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token gerado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/client_credential/revoke_accesstoken": {
+      "get": {
+        "summary": "InvalidateAccessToken",
+        "description": "Utilizado para invalidar um token existente",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "description": "access_token recebido no método anterior",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token invalidado"
+          }
+        }
+      }
+    },
+    "/oauth/client_credential/exchangetoken": {
+      "post": {
+        "summary": "ExchangeJWTToken",
+        "description": "Conforme podemos ver na página de Integração com o Keycloak, pode ser necessário gerar um token opaco a partir de um token JWT gerado na nossa instância de Keycloak",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "access_token JWT recebido após login do usuário no Keycloack",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token trocado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Status",
+        "description": "Utilizado para consultar o status e saude do servidor.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status do servidor"
+          }
+        }
+      }
+    },
+    "/session-token": {
+      "get": {
+        "summary": "Session Token",
+        "description": "Gera um pedaço de dados criptografado e assinado chamado Session Token, que é recebido como entrada para o código de inicialização do Liveness Check no lado do dispositivo.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session token gerado"
+          }
+        }
+      }
+    },
+    "/liveness-3d": {
+      "post": {
+        "summary": "Liveness 3D",
+        "description": "Executa uma verificação de vivacidade 3D no FaceScan.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-User-Agent",
+            "in": "header",
+            "required": true,
+            "description": "Agent que sera feito a chamada Android, Iphone, Browser..)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-FT-IPAddress",
+            "in": "header",
+            "required": true,
+            "description": "Servidor Localizado o Facetec",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "faceScan": {
+                    "type": "string"
+                  },
+                  "auditTrailImage": {
+                    "type": "string"
+                  },
+                  "lowQualityAuditTrailImage": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verificação realizada"
+          }
+        }
+      }
+    },
+    "/enrollment-3d": {
+      "post": {
+        "summary": "Enrollment-3D",
+        "description": "Executa uma verificação de liveness 3D no FaceScan e armazena o FaceMap 3D resultante no banco de dados em caso de sucesso.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-User-Agent",
+            "in": "header",
+            "required": true,
+            "description": "Agent que sera feito a chamada Android, Iphone, Browser..)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-FT-IPAddress",
+            "in": "header",
+            "required": true,
+            "description": "Servidor Localizado o Facetec",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "externalDatabaseRefID": {
+                    "type": "string"
+                  },
+                  "faceScan": {
+                    "type": "string"
+                  },
+                  "auditTrailImage": {
+                    "type": "string"
+                  },
+                  "lowQualityAuditTrailImage": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Enrollment realizado"
+          }
+        }
+      }
+    },
+    "/enrollment-3d/{TEST_EXTERNAL_DBREF_ID}": {
+      "get": {
+        "summary": "Enrollment 3d test_external_dbref_id",
+        "description": "Obtenha o FaceMap, Imagem e dados de criação associados ao Identificador de enrollment passado. Defina o FaceMap para o exemplo de FaceMap Audit Data.",
+        "parameters": [
+          {
+            "name": "TEST_EXTERNAL_DBREF_ID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados recuperados"
+          }
+        }
+      }
+    },
+    "/match-3d-3d": {
+      "post": {
+        "summary": "Match 3D3D",
+        "description": "Executa uma verificação de vivacidade 3D no FaceScan e, em seguida, executa o match 3D para 3D no FaceMap 3D resultante em relação ao FaceMap 3D armazenado no banco de dados.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-User-Agent",
+            "in": "header",
+            "required": true,
+            "description": "Agent que sera feito a chamada Android, Iphone, Browser..)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-FT-IPAddress",
+            "in": "header",
+            "required": true,
+            "description": "Servidor Localizado o Facetec",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "externalDatabaseRefID": {
+                    "type": "string"
+                  },
+                  "faceScan": {
+                    "type": "string"
+                  },
+                  "auditTrailImage": {
+                    "type": "string"
+                  },
+                  "lowQualityAuditTrailImage": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Match realizado"
+          }
+        }
+      }
+    },
+    "/match-3d-2d-idscan": {
+      "post": {
+        "summary": "Match 3D/2D idscan",
+        "description": "Analisa o ID Scan para garantir que seja uma captura de Full ID e que não seja um Digital Spoof de um ID apresentado em uma tela. Faz a comparação do rosto na digitalização de identificação com o FaceMap 3D.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-User-Agent",
+            "in": "header",
+            "required": true,
+            "description": "Agent que sera feito a chamada Android, Iphone, Browser..)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-FT-IPAddress",
+            "in": "header",
+            "required": true,
+            "description": "Servidor Localizado o Facetec",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "externalDatabaseRefID": {
+                    "type": "string"
+                  },
+                  "idScan": {
+                    "type": "string"
+                  },
+                  "idScanFrontImage": {
+                    "type": "string"
+                  },
+                  "idScanBackImage": {
+                    "type": "string"
+                  },
+                  "minMatchLevel": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Match realizado"
+          }
+        }
+      }
+    },
+    "/match-2d-2d": {
+      "post": {
+        "summary": "Match 2D2D",
+        "description": "Executa 2D para 2D Matching de duas imagens.",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "X-Device-Key",
+            "in": "header",
+            "required": true,
+            "description": "Facetec Key Device ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Match realizado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessTokenResponse": {
+        "type": "object",
+        "description": "Objeto de resposta contendo tokens e informações de sessão.",
+        "properties": {
+          "refresh_token_expires_in": "0",
+          "api_product_list": "array",
+          "api_product_list_json": "array",
+          "organization_name": "string",
+          "developer.email": "string",
+          "token_type": "string",
+          "issued_at": "string",
+          "client_id": "string",
+          "access_token": "string",
+          "application_name": "string",
+          "scope": "string",
+          "expires_in": "0",
+          "refresh_count": "0",
+          "status": "string"
+        }
+      }
+    }
+  }
+}
