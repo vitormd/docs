@@ -122,6 +122,11 @@
       "get": {
         "summary": "Status",
         "description": "Utilizado para consultar o status e saude do servidor.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:STATUS:READ"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -153,6 +158,11 @@
       "get": {
         "summary": "Gera Facetec Session Token",
         "description": "Gera um pedaço de dados criptografado e assinado chamado Session Token, que é recebido como entrada para o código de inicialização do Liveness Check no lado do dispositivo.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:SESSION:READ"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -184,6 +194,11 @@
       "post": {
         "summary": "Liveness 3D",
         "description": "Executa uma verificação de prova de vida 3D no FaceScan.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:MATCH:WRITE"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -254,6 +269,11 @@
       "post": {
         "summary": "Enrollment 3D",
         "description": "Executa uma verificação de liveness 3D no FaceScan e armazena o FaceMap 3D resultante no banco de dados em caso de sucesso.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:ENROLL:WRITE"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -327,6 +347,11 @@
       "get": {
         "summary": "Enrollment 3D",
         "description": "Obtenha o FaceMap, Imagem e dados de criação associados ao Identificador de enrollment passado. Defina o FaceMap para o exemplo de FaceMap Audit Data.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:ENROLL:WRITE"]
+          }
+        ],
         "parameters": [
           {
             "name": "TEST_EXTERNAL_DBREF_ID",
@@ -366,6 +391,11 @@
       "post": {
         "summary": "Match 3D:3D",
         "description": "Executa uma verificação de vivacidade 3D no FaceScan e, em seguida, executa o match 3D para 3D no FaceMap 3D resultante em relação ao FaceMap 3D armazenado no banco de dados.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:MATCH:WRITE"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -439,6 +469,11 @@
       "post": {
         "summary": "Match 3D:2D ID Scan",
         "description": "Analisa um documento de identidade para garantir que seja uma captura completa e verdadeira do documento. Faz a comparação do rosto do documento de identificação com o FaceMap 3D.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:MATCH:WRITE"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -515,6 +550,11 @@
       "post": {
         "summary": "Match 2D:2D",
         "description": "Executa 2D para 2D Matching de duas imagens.",
+        "security": [
+          {
+            "OAuth2": ["VALIDID:FACETEC:MATCH:WRITE"]
+          }
+        ],
         "parameters": [
           {
             "name": "Content-Type",
@@ -554,17 +594,35 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://api.valid.com/oauth/client_credential/accesstoken",
+            "scopes": {
+              "VALIDID:FACETEC:MATCH:WRITE": "Permission to perform facial matching operations",
+              "VALIDID:FACETEC:SESSION:READ": "Permission to read session tokens",
+              "VALIDID:FACETEC:STATUS:READ": "Permission to read system status",
+              "VALIDID:FACETEC:ENROLL:WRITE": "Permission to perform enrollment operations"
+            }
+          }
+        }
+      }
+    },
     "schemas": {
       "AccessTokenResponse": {
         "type": "object",
         "description": "Objeto de resposta contendo tokens e informações de sessão.",
         "properties": {
           "refresh_token_expires_in": "0",
-          "api_product_list": "array",
-          "api_product_list_json": "array",
+          "api_product_list": "[Facetec - Public API]",
+          "api_product_list_json": [
+            "Facetec - Public API"
+          ],
           "organization_name": "string",
           "developer.email": "string",
-          "token_type": "string",
+          "token_type": "Bearer",
           "issued_at": "string",
           "client_id": "string",
           "access_token": "string",
