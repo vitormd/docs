@@ -20,6 +20,18 @@
       "post": {
         "summary": "Gera Access Token",
         "description": "Utilizado para solicitar um token. A lista de produtos retornada vem dos produtos que a aplicação tem acesso de acordo com o configurado na área de Apps do Apigee.",
+        "parameters": [
+          {
+            "name": "grant_type",
+            "in": "query",
+            "description": "Tipo de grant para autenticação OAuth",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "client_credentials"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
