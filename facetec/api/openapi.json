@@ -570,8 +570,7 @@
             "scopes": {
               "VALIDID:FACETEC:ENROLL:WRITE": "Permission to perform enrollment operations",
               "VALIDID:FACETEC:MATCH:WRITE": "Permission to perform facial matching operations",
-              "VALIDID:FACETEC:SESSION:READ": "Permission to read session tokens",
-              "VALIDID:FACETEC:STATUS:READ": "Permission to read system status"
+              "VALIDID:FACETEC:SESSION:READ": "Permission to read session tokens"
             }
           }
         }
