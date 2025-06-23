@@ -20,6 +20,7 @@
       "post": {
         "summary": "Gera Access Token",
         "description": "Utilizado para solicitar um token. A lista de produtos retornada vem dos produtos que a aplicação tem acesso de acordo com o configurado na área de Apps do Apigee.",
+        "security": [],
         "parameters": [
           {
             "name": "grant_type",
@@ -71,6 +72,7 @@
       "get": {
         "summary": "Invalída Access Token",
         "description": "Utilizado para invalidar um token existente",
+        "security": [],
         "parameters": [
           {
             "name": "token",
@@ -93,6 +95,7 @@
       "post": {
         "summary": "Troca JWT por Opaco",
         "description": "Conforme podemos ver na página de Integração com o Keycloak, pode ser necessário gerar um token opaco a partir de um token JWT gerado na nossa instância de Keycloak",
+        "security": [],
         "parameters": [
           {
             "name": "Authorization",
@@ -118,43 +121,7 @@
         }
       }
     },
-    "/status": {
-      "get": {
-        "summary": "Status",
-        "description": "Utilizado para consultar o status e saude do servidor.",
-        "security": [
-          {
-            "OAuth2": ["VALIDID:FACETEC:STATUS:READ"]
-          }
-        ],
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "application/json"
-            }
-          },
-          {
-            "name": "X-Device-Key",
-            "in": "header",
-            "required": true,
-            "description": "Facetec Key Device ID",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Status do servidor"
-          }
-        }
-      }
-    },
-    "/session-token": {
+    "/facetec/session-token": {
       "get": {
         "summary": "Gera Facetec Session Token",
         "description": "Gera um pedaço de dados criptografado e assinado chamado Session Token, que é recebido como entrada para o código de inicialização do Liveness Check no lado do dispositivo.",
@@ -190,7 +157,7 @@
         }
       }
     },
-    "/liveness-3d": {
+    "/facetec/liveness-3d": {
       "post": {
         "summary": "Liveness 3D",
         "description": "Executa uma verificação de prova de vida 3D no FaceScan.",
@@ -265,7 +232,7 @@
         }
       }
     },
-    "/enrollment-3d": {
+    "/facetec/enrollment-3d": {
       "post": {
         "summary": "Enrollment 3D",
         "description": "Executa uma verificação de liveness 3D no FaceScan e armazena o FaceMap 3D resultante no banco de dados em caso de sucesso.",
@@ -343,7 +310,7 @@
         }
       }
     },
-    "/enrollment-3d/{TEST_EXTERNAL_DBREF_ID}": {
+    "/facetec/enrollment-3d/{TEST_EXTERNAL_DBREF_ID}": {
       "get": {
         "summary": "Enrollment 3D",
         "description": "Obtenha o FaceMap, Imagem e dados de criação associados ao Identificador de enrollment passado. Defina o FaceMap para o exemplo de FaceMap Audit Data.",
@@ -387,7 +354,7 @@
         }
       }
     },
-    "/match-3d-3d": {
+    "/facetec/match-3d-3d": {
       "post": {
         "summary": "Match 3D:3D",
         "description": "Executa uma verificação de vivacidade 3D no FaceScan e, em seguida, executa o match 3D para 3D no FaceMap 3D resultante em relação ao FaceMap 3D armazenado no banco de dados.",
@@ -465,7 +432,7 @@
         }
       }
     },
-    "/match-3d-2d-idscan": {
+    "/facetec/match-3d-2d-idscan": {
       "post": {
         "summary": "Match 3D:2D ID Scan",
         "description": "Analisa um documento de identidade para garantir que seja uma captura completa e verdadeira do documento. Faz a comparação do rosto do documento de identificação com o FaceMap 3D.",
@@ -546,7 +513,7 @@
         }
       }
     },
-    "/match-2d-2d": {
+    "/facetec/match-2d-2d": {
       "post": {
         "summary": "Match 2D:2D",
         "description": "Executa 2D para 2D Matching de duas imagens.",
@@ -601,10 +568,10 @@
           "clientCredentials": {
             "tokenUrl": "https://api.valid.com/oauth/client_credential/accesstoken",
             "scopes": {
+              "VALIDID:FACETEC:ENROLL:WRITE": "Permission to perform enrollment operations",
               "VALIDID:FACETEC:MATCH:WRITE": "Permission to perform facial matching operations",
               "VALIDID:FACETEC:SESSION:READ": "Permission to read session tokens",
-              "VALIDID:FACETEC:STATUS:READ": "Permission to read system status",
-              "VALIDID:FACETEC:ENROLL:WRITE": "Permission to perform enrollment operations"
+              "VALIDID:FACETEC:STATUS:READ": "Permission to read system status"
             }
           }
         }
