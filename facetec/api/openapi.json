@@ -7,6 +7,10 @@
   },
   "servers": [
     {
+      "url": "https://api-dev.valid.com/",
+      "description": "Desenvolvimento"
+    },
+    {
       "url": "https://api-hml.valid.com",
       "description": "Homologação"
     },
